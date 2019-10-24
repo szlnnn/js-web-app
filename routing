@@ -1,0 +1,77 @@
+-addcarsandpeople.html
+-editcarsandpeople.html
+-penalty.html
+
+
+-additem/car   addcarsandpeople.html
+    newCarMW
+    getDriverMW
+    renderMW
+
+-additem/people addcarsandpeople.html
+    newDriverMW
+    renderMW
+
+
+
+-item/getcar/            editcarsandpeople
+    getCarMW
+    renderMW
+-item/getcar/edit/:carid     editcarsandpeople
+    getCarMW
+    updateCarMW
+    renderMW
+-item/getcar/:carid/delete       editcarsandpeople
+    getCarMW
+    deleteCarMW
+    renderMW
+
+-item/getdriver/             editcarsandpeople
+        getDriverMW
+        renderMW
+-item/gerdriver/:driverid/edit   editcarsandpeople
+    getDriverMW
+    updateDriverMW
+    renderMW
+-item/getdriver/:driverid/delete     editcarsandpeople
+    getDriverMW
+    updateDriverMW
+    renderMW
+
+-/               penalty.html
+    redirectMW
+-penalty/                        penalty.html
+    getDriversMW
+    getCarsMW
+    getPenaltyPointsMW
+    renderMW
+
+-penalty/new                        penalty.html
+    getDriver
+    getCar
+    getPenalty
+    newPoliceRecord
+    renderMW
+
+
+car:
+    getCarMW
+    getCarsMw
+    newCarMW
+    updateCarMW
+    deleteCarMW
+
+driver:
+    getDriverMW
+    getDriversMW
+    newDriverMW
+    updateDriverMW
+    deleteDriverMW
+
+other:
+    renderMW
+    redirectMW
+    getPenaltyMW
+    newPoliceRecordMW
+
+

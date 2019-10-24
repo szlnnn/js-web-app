@@ -1,0 +1,65 @@
+<%- include('header') -%>
+<%- include('navbar') -%>
+<div class="container">
+    <div class = "row">
+        <h2>Cars And People:</h2>
+    </div>
+    <div class="row">
+        <div class="col py-3 px-lg-2 border bg-light">
+            <div id="table" class="table-editable">
+                <form method="POST">
+                <table class="table table-bordered table-responsive-md table-striped text-center">
+                    <tr>
+                        <th class="text-center">Driver Name</th>
+                        <th class="text-center">License</th>
+                        <th class="text-center">Save</th>
+                        <th class="text-center">Delete</th>
+                    </tr>
+                    <% drivers.forEach(function(driver){ %>
+                    <tr>
+                        <td class="pt-3-half" contenteditable="true" name="name" id="name"><%= driver.name %></td>
+                        <td class="pt-3-half" contenteditable="true" name="license" id="license"><%= driver.license %></td>
+                        <td>
+                            <a href="/item/getdriver/edit/<%= driver._id %>" class="table-remove"><button type="button" class="btn btn-primary btn-rounded btn-sm my-0">Edit</button></a>
+                        </td>
+                        <td>
+                            <a href="/item/getdriver/delete/<%= driver._id %>" class="table-remove"><button type="button" class="btn btn-danger btn-rounded btn-sm my-0">Remove</button></a>
+                        </td>
+                    </tr>
+                    <% }); %>
+                </table>
+                </form>
+            </div>
+        </div>
+        <div class="col py-3 px-lg-4 border bg-light">
+            <div id="table2" class="table-editable">
+                <table class="table table-bordered table-responsive-md table-striped text-center">
+                    <tr>
+                        <th class="text-center">Make</th>
+                        <th class="text-center">Model</th>
+                        <th class="text-center">Driver</th>
+                        <th class="text-center">License Plate</th>
+                        <th class="text-center">Save</th>
+                        <th class="text-center">Delete</th>
+                    </tr>
+                    <% cars.forEach(function(car){ %>
+                    <tr>
+                        <td class="pt-3-half" contenteditable="true"><%= car.make %></td>
+                        <td class="pt-3-half" contenteditable="true"><%= car.model %></td>
+                        <td class="pt-3-half" contenteditable="true" ><%= car._driver.name %></td>
+                        <td class="pt-3-half" contenteditable="true" ><%= car.license %></td>
+                        <td>
+                            <a href="/item/getcar/edit/<%= car._id %>" class="table-remove"><button type="button" class="btn btn-primary btn-rounded btn-sm my-0">Edit</button></a>
+                        </td>
+                        <td>
+                            <a href="/item/getcar/delete/<%= car._id %>" class="table-remove"><button type="button" class="btn btn-danger btn-rounded btn-sm my-0">Remove</button></a>
+                        </td>
+                    </tr>
+                    <% }); %>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<%- include('footer') -%>
+

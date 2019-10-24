@@ -1,0 +1,83 @@
+<%- include('header') -%>
+<%- include('navbar') -%>
+<div class="container">
+        <div class="row">
+            <div class="col px-lg-6">
+            <h2>Add Cars and Drivers</h2>
+            </div>
+        </div>
+        <div class="row" >
+
+            <div class="col py-3 px-lg-5 border bg-light">
+                <h3>Driver</h3>
+                        <form method="post">
+                        <div class="form-group mb-2">
+                            <label for="name2" class="sr-only">Name</label>
+                            <input type="text" readonly class="form-control-plaintext" id="name2" name = "name2" value="Name:*">
+                        </div>
+                        <div class="form-group mx-sm-3 mb-2">
+                            <input type="text" class="form-control" id="dname" name="dname" value="<%= (typeof driver === 'undefined') ? '' : driver.name %>">
+                        </div>
+                        <div class="form-group mb-2">
+                            <label for="license2" class="sr-only">License</label>
+                            <input type="text" readonly class="form-control-plaintext" id="license2" name="license2" value="License:*">
+                        </div>
+                        <div class="form-group mx-sm-3 mb-2">
+                            <label for="dlicense" class="sr-only">License</label>
+                            <input type="text" class="form-control" id="dlicense" name = "dlicense" value="<%= (typeof driver === 'undefined') ? '' : driver.license %>">
+                        </div>
+                            <input type="submit" class="btn btn-success" value="Save"/>
+                        </form>
+            </div>
+            <div class="col py-3 px-lg-5 border bg-light">
+                <h3>Car</h3>
+                <form method="post">
+                        <div class="form-group mb-2">
+                            <label for="make2" class="sr-only">Make</label>
+                            <input type="text" readonly class="form-control-plaintext" id="make2"  value="Make:">
+                        </div>
+                        <div class="form-group mx-sm-3 mb-2">
+                            <label for="make" class="sr-only">Make</label>
+                            <input type="text" class="form-control" id="make" name="make" value="<%= (typeof car === 'undefined') ? '' : car.make %>">
+                        </div>
+                        <div class="form-group mb-2">
+                            <label for="staticModel" class="sr-only">Model</label>
+                            <input type="text" readonly class="form-control-plaintext" id="staticModel"  value="Model:">
+                        </div>
+                        <div class="form-group mx-sm-3 mb-2">
+                            <label for="model" class="sr-only">Model</label>
+                            <input type="text" class="form-control" id="model" name = "model" value="<%= (typeof car === 'undefined') ? '' : car.model %>">
+                        </div>
+                        <div class="form-group mb-2">
+                            <label for="staticDriver" class="sr-only">Driver</label>
+                            <input type="text" readonly class="form-control-plaintext" id="staticDriver" value="Owner:*">
+                        </div>
+                        <div class="form-group mx-sm-3 mb-2">
+                            <select class="form-control" id="selectOwner" name = "selectOwner" >
+                                <% drivers.forEach(function(driver){
+                                if (typeof car === 'undefined') { %>
+                                    <option class="dropdown-item"><%= driver.name %></option>
+                                <% }else if (driver.name == car.driver){ %>
+                                    <option class="dropdown-item" selected="selected" name = "selectedDriverName"><%= driver.name %></option>
+                                <%} else {%>
+                                    <option class="dropdown-item"><%= driver.name %></option>
+                                <%}});%>
+                            </select>
+                        </div>
+                        <div class="form-group mb-2">
+                            <label for="staticPlate" class="sr-only">Plate</label>
+                            <input type="text" readonly class="form-control-plaintext" id="staticPlate"  value="License Plate:*">
+                        </div>
+                        <div class="form-group mx-sm-3 mb-2">
+                            <label for="plate" class="sr-only">Plate</label>
+                            <input type="text" class="form-control" id="plate" name = "plate" value="<%= (typeof car === 'undefined') ? '' : car.license %>" >
+                        </div>
+                    <input type="submit" class="btn btn-success" value="Save"/>
+                </form>
+            </div>
+
+
+        </div>
+
+</div>
+<%- include('footer') -%>
